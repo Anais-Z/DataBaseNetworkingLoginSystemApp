@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">project_jones_zulfequar</string>
+    <string name="login">Login</string>
+    <string name="username">UserName</string>
+    <string name="password">Password</string>
+    <string name="keep_me_logged_in">Keep Me Logged In</string>
+    <string name="login">Login</string>
+    <string name="anais_zulfequar_991559330">Anais Zulfequar 991559330</string>
+    <string name="alex_jones_991569968">Alex Jones 991569968</string>
+    <string name="hi">Hi ,</string>
+    <string name="please_select_an_option">Please Select An Option</string>
+    <string name="enter_new_record">Enter New Record</string>
+    <string name="display_previous_record">Display Previous Record</string>
+    <string name="log_out">Log Out</string>
+    <string name="submit">Submit</string>
 </resources>
