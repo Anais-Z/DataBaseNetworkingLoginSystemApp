@@ -2,7 +2,10 @@ package com.example.project_jones_zulfequar
 
 import android.app.Application
 import android.util.Log
+import android.view.KeyEvent
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStream
@@ -12,7 +15,7 @@ import java.net.URL
 
 class MyViewModel(application: Application) : AndroidViewModel(application) {
 
-    fun loadData(urlString: String): String {
+   suspend fun loadData(urlString: String): String {
 
         var ins : InputStream? = null
         var result = ""
@@ -35,6 +38,16 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
 
     fun makeRequest(url: String){
 
+        CoroutineScope(Dispatchers.IO).launch {
+            var result = loadData(url)
+
+            withContext(Dispatchers.Main){
+                var json = getJason(result)
+                var login = json.optString("login")
+
+                Toast.makeText(getApplication(), login , Toast.LENGTH_LONG).show()
+            }
+        }
 
     }
 
