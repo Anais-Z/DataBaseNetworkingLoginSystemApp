@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
                 var password = passwordText.text.toString();
 
                 if(username == "" || password == ""){
+                    Toast.makeText(this, "Please fill in every field", Toast.LENGTH_SHORT).show()
                     userNameText.text.clear()
                     passwordText.text.clear()
                 } else if (username == "admin" && password == "admin" || username == "user" && password == "12345"){
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(i)
                 }else{
                     getData(url2)
+                    userNameText.text.clear()
+                    passwordText.text.clear()
                 }
 
             }else{
