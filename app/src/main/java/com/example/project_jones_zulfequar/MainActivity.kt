@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         vm = ViewModelProvider(this,  ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MyViewModel :: class.java)
+        var name = ""
         loginButton.setOnClickListener {
             var url = "http://mohameom.dev.fast.sheridanc.on.ca/login/verify.php?name=user&password=12345"
             var url2 = "http://mohameom.dev.fast.sheridanc.on.ca/login/verify.php"
@@ -26,9 +27,21 @@ class MainActivity : AppCompatActivity() {
                     userNameText.text.clear()
                     passwordText.text.clear()
                 } else if (username == "admin" && password == "admin" || username == "user" && password == "12345"){
+                    name = if (username == "admin"){
+                        "admin"
+                    } else {
+                        "user"
+                    }
                         getData(url)
                     val i = Intent(this, MainActivity2::class.java)
+
+                    intent.putExtra("Username", name)
                     startActivity(i)
+                    userNameText.text.clear()
+                    passwordText.text.clear()
+                    if (loggedIn.isChecked){
+
+                    }
                 }else{
                     getData(url2)
                     userNameText.text.clear()

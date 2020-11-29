@@ -53,7 +53,7 @@
         app:layout_constraintVertical_bias="0.449" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/loggedIn"
         android:layout_width="284dp"
         android:layout_height="51dp"
         android:text="@string/keep_me_logged_in"
