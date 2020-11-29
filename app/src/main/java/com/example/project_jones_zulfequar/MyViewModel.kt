@@ -25,7 +25,7 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
             ins = conn.inputStream
 
             result = ins.bufferedReader().use (BufferedReader :: readText)
-
+            var json = getJason(result)
             Log.d("result", result)
         }catch (e : Exception){
             Log.d("TAG", e.toString())
@@ -38,8 +38,9 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun getJason(jsonStr:String) {
-
+    fun getJason(jsonStr:String) : JSONObject {
+            var json = JSONObject(jsonStr)
+        return json
     }
 
 }
