@@ -21,7 +21,7 @@ class MainActivity2 : AppCompatActivity() {
                 val i = Intent(this, MainActivity4::class.java)
                 startActivity(i)
             }else if (previousRecordButton.isChecked){
-                val i2 = Intent(this, MainActivity3::class.java)
+                val i2 = Intent(this, ViewRecords::class.java)
                 startActivity(i2)
             }else if (logOutButton.isChecked){
                 System.exit(0);

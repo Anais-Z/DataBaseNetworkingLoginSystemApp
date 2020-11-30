@@ -39,6 +39,8 @@
         android:layout_width="204dp"
         android:layout_height="23dp"
         android:layout_marginTop="75dp"
+        android:valueFrom="0"
+        android:valueTo="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etStudentID" />
