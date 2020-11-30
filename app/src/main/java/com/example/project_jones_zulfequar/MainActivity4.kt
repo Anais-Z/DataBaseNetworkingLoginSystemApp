@@ -1,5 +1,6 @@
 package com.example.project_jones_zulfequar
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -34,6 +35,27 @@ class MainActivity4 : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Selected: ${p0?.progress}", Toast.LENGTH_SHORT).show()
             }
         })
+
+        btnSaveRecord.setOnClickListener {
+            if (etStudentID.text.isNotBlank() || etComments.text.isNotBlank()){
+                var id = etStudentID.text.toString();
+                var comment = etComments.text.toString();
+                if (id == "" || comment == ""){
+                    Toast.makeText(this, "Fill in every field please!!!", Toast.LENGTH_SHORT).show()
+                    etStudentID.text.clear()
+                    etComments.text.clear()
+                }
+
+            }else{
+                Toast.makeText(this, "Please fill the field", Toast.LENGTH_SHORT).show()
+
+            }
+        }
+
+        btnBack.setOnClickListener {
+            var i = Intent(this, MainActivity2::class.java)
+            startActivity(i)
+        }
 
 
 
