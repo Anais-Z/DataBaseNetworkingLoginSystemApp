@@ -12,4 +12,13 @@
     <string name="display_previous_record">Display Previous Record</string>
     <string name="log_out">Log Out</string>
     <string name="submit">Submit</string>
+    <string name="score">Score</string>
+    <string name="comments">Comments</string>
+    <string name="save_record">Save Record</string>
+    <string name="back">Back</string>
+    <string name="_0">0</string>
+    <string name="_10">10</string>
+    <string name="_5">5</string>
+    <string name="student_id">Student ID</string>
+    <string name="new_record">New Record</string>
 </resources>
