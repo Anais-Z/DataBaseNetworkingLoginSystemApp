@@ -1,4 +1,21 @@
 package com.example.project_jones_zulfequar
 
-class UserDao {
+import androidx.room.*
+@Dao
+interface UserDao {
+
+
+    @Insert
+    fun insertUser(vararg users: User)
+
+    @Delete
+    fun deleteUser(vararg users: User)
+
+    @Update
+    fun updateUser(vararg users: User)
+
+   // @Query(" SELECT * From  user")
+  //  fun getAll() : List<User>
+
+
 }
