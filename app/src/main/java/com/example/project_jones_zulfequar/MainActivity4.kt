@@ -9,16 +9,21 @@ import android.widget.ProgressBar
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.project_jones_zulfequar.MyDatabase.Companion.getDatabase
 
 import kotlinx.android.synthetic.main.activity_main4.*
 
 class MainActivity4 : AppCompatActivity() {
 
-     var score = 0
+    lateinit var viewModel: MyViewModel
+     lateinit var score : SeekBar
+    var score1 = 0
     var id = ""
     var comment = ""
-
+    var theNum = 8
+    var count = 8
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +38,10 @@ class MainActivity4 : AppCompatActivity() {
 
         sbScore?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                score = p1
+                if (p0 != null) {
+                    score = p0
+                }
+              score1 =  score.progress
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -52,7 +60,12 @@ class MainActivity4 : AppCompatActivity() {
                 if (id == "" || comment == ""){
                     Toast.makeText(this, "Fill in every field please!!!", Toast.LENGTH_SHORT).show()
                 }else{
-                    val user = User(id, score.toString(), comment)
+                    theNum++
+                    count++
+                    intent.putExtra("number", theNum)
+                    intent.putExtra("count", count)
+                    val user = User(id, score1.toString(), comment)
+
                     Thread{
                         var db = MyDatabase.getDatabase(this)
                         if (db != null){
@@ -67,6 +80,7 @@ class MainActivity4 : AppCompatActivity() {
                 }
 
                 var intent = Intent(this, ViewRecords::class.java)
+
                 startActivity(intent)
 
             }else{
@@ -74,6 +88,11 @@ class MainActivity4 : AppCompatActivity() {
 
             }
         }
+
+        fun onDelereClickListener(user: User){
+
+        }
+
 
         btnBack.setOnClickListener {
             var i = Intent(this, MainActivity2::class.java)

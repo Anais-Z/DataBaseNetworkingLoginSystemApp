@@ -4,13 +4,13 @@ import androidx.room.*
 @Entity
 
 data class User(
-    @PrimaryKey var id : String,
-    var score : String,
-    var comment : String
+    @PrimaryKey @ColumnInfo(name = "id") var id : String,
+    @ColumnInfo(name = "score") var score : String,
+   @ColumnInfo(name = "comment") var comment : String
 
 )  {
     override fun toString(): String {
-        return "$id , $score , $comment"
+        return "    $id                                   $score                                          $comment "
     }
 
 }

@@ -12,6 +12,11 @@ class ViewRecords : AppCompatActivity() {
     var theId = ""
     var theComment = ""
     var theScore = ""
+    var count = 0
+    var theNum = ""
+    var actualNum=  0
+    var theCount = ""
+    var actualC = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_records)
@@ -27,17 +32,35 @@ class ViewRecords : AppCompatActivity() {
 
 
             var layoutManager = LinearLayoutManager(this)
-            var data = getData()
+            var data = getData(actualNum, actualC)
             var adapter = MyAdapter(data, this)
             recyclerView.layoutManager = layoutManager
             recyclerView.adapter = adapter
 
     }
-    fun getData(): ArrayList<User>{
+    fun getData(num : Int, count : Int): ArrayList<User>{
+
         var list = ArrayList<User>(0)
         var users = db?.userDao()?.getAll()
-        var user = User(users?.get(0).toString(), users?.get(1).toString(), users?.get(2).toString())
-        list.add(user)
+
+
+
+        var user4 = User(users?.get(5).toString(), users?.get(2).toString(), users?.get(2).toString())
+        list.add(user4)
+        var user5 = User(users?.get(6).toString(), users?.get(2).toString(), users?.get(2).toString())
+        list.add(user5)
+       // var user6 = User(users?.get(7).toString(), users?.get(2).toString(), users?.get(2).toString())
+       // list.add(user6)
+        var user7 = User(users?.get(9).toString(), users?.get(2).toString(), users?.get(2).toString())
+        list.add(user7)
+
+      //  while (num == count){
+      //     var  theUser = User(users?.get(num).toString(), users?.get(2).toString(), users?.get(2).toString())
+       //     list.add(theUser)
+
+     //   }
+
+
         return list
     }
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -14,6 +15,41 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class MyViewModel(application: Application) : AndroidViewModel(application) {
+
+    lateinit var allUsers : MutableLiveData<List<User>>
+
+    init{
+        allUsers = MutableLiveData()
+        getAllUsers()
+    }
+
+    fun getAllUsersObservers() : MutableLiveData<List<User>>{
+        return allUsers
+    }
+
+    fun getAllUsers(){
+        val userDao = MyDatabase.getDatabase((getApplication()))?.userDao()
+        var list = userDao?.getAll()
+        allUsers.postValue(list)
+    }
+
+    fun insertUserInfo(entity : User){
+        val userDao = MyDatabase.getDatabase((getApplication()))?.userDao()
+        userDao?.insertUser(entity)
+        getAllUsers()
+    }
+
+    fun updateUserInfo(entity: User){
+        val userDao = MyDatabase.getDatabase((getApplication()))?.userDao()
+        userDao?.updateUser(entity)
+        getAllUsers()
+    }
+
+    fun deleteUserInfo(entity: User){
+        val userDao = MyDatabase.getDatabase((getApplication()))?.userDao()
+        userDao?.deleteUser(entity)
+        getAllUsers()
+    }
 
    suspend fun loadData(urlString: String): String {
 
