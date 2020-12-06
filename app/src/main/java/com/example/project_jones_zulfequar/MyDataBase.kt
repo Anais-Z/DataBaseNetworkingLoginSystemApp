@@ -1,11 +1,9 @@
 package com.example.project_jones_zulfequar
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 
-class MyDataBase {
+
     @Database(entities = [User::class], version = 1)
     abstract class MyDatabase : RoomDatabase() {
 
@@ -25,8 +23,7 @@ class MyDataBase {
 
                 }
 
-                return instance
+                return this.instance
             }
         }
     }
-}

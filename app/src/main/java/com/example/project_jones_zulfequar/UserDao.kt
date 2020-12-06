@@ -6,16 +6,14 @@ interface UserDao {
 
 
     @Insert
-    fun insertUser(vararg users: User)
+    fun insertAll(vararg users: User)
 
-    @Delete
-    fun deleteUser(vararg users: User)
 
     @Update
     fun updateUser(vararg users: User)
 
-   // @Query(" SELECT * From  user")
-  //  fun getAll() : List<User>
+    @Query(" SELECT * From  user")
+    fun getAll() : List<User>
 
 
 }
