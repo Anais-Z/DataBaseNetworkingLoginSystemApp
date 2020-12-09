@@ -27,14 +27,12 @@ class MainActivity : AppCompatActivity() {
                     userNameText.text.clear()
                     passwordText.text.clear()
                 } else if (username == "admin" && password == "admin" || username == "user" && password == "12345"){
-                    name = if (username == "admin"){
-                        "admin"
-                    } else {
-                        "user"
-                    }
+                    if(username == "admin"){
+                        name = "Admin"
+                    }else{ name = "User"}
+
                         getData(url)
                     val i = Intent(this, MainActivity2::class.java)
-
                     intent.putExtra("Username", name)
                     startActivity(i)
                     userNameText.text.clear()

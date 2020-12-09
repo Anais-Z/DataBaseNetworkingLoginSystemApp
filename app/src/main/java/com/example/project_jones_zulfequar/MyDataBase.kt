@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.*
 
 
-    @Database(entities = [User::class], version = 1)
+    @Database(entities = [Records::class], version = 1)
     abstract class MyDatabase : RoomDatabase() {
 
-        abstract fun  userDao() : UserDao
+        abstract fun  recordsDao() : RecordsDao
         companion object {
             private var instance: MyDatabase? = null
             fun getDatabase(context: Context): MyDatabase? {
@@ -23,7 +23,7 @@ import androidx.room.*
 
                 }
 
-                return this.instance
+                return instance
             }
         }
     }

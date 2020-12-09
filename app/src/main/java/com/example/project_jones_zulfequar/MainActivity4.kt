@@ -22,8 +22,7 @@ class MainActivity4 : AppCompatActivity() {
     var score1 = 0
     var id = ""
     var comment = ""
-    var theNum = 8
-    var count = 8
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,34 +53,31 @@ class MainActivity4 : AppCompatActivity() {
         })
 
         btnSaveRecord.setOnClickListener {
-            if (etStudentID.text.isNotBlank() || etComments.text.isNotBlank()){
+            if (etStudentID.text.isNotBlank() || editComment.text.isNotBlank()){
                  id = etStudentID.text.toString();
-                 comment = etComments.text.toString();
+                 comment = editComment.text.toString();
                 if (id == "" || comment == ""){
                     Toast.makeText(this, "Fill in every field please!!!", Toast.LENGTH_SHORT).show()
                 }else{
-                    theNum++
-                    count++
-                    intent.putExtra("number", theNum)
-                    intent.putExtra("count", count)
-                    val user = User(id, score1.toString(), comment)
+
+                    val record = Records(this.id, this.score1.toString(), this.comment)
 
                     Thread{
                         var db = MyDatabase.getDatabase(this)
                         if (db != null){
-                            db.userDao().insertAll(user)
+                            db.recordsDao().insertAll(record)
 
                             runOnUiThread {
                                 etStudentID.text.clear()
-                                etComments.text.clear()
+                                sbScore.progress = 0
+                                editComment.text.clear()
+                                Toast.makeText(this, "Record Added", Toast.LENGTH_SHORT).show()
+
                             }
                         }
                     }.start()
                 }
 
-                var intent = Intent(this, ViewRecords::class.java)
-
-                startActivity(intent)
 
             }else{
                 Toast.makeText(this, "Please fill the field", Toast.LENGTH_SHORT).show()
@@ -89,9 +85,6 @@ class MainActivity4 : AppCompatActivity() {
             }
         }
 
-        fun onDelereClickListener(user: User){
-
-        }
 
 
         btnBack.setOnClickListener {

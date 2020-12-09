@@ -8,14 +8,18 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main2.*
 
 class MainActivity2 : AppCompatActivity() {
-    var theName = " "
+    var theName : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
         theName = intent.getStringExtra("Username" ).toString()
-        if (nameText.text == null) {
-            nameText.text = theName
+        if(theName == "Admin"){
+            nameText.text = "Admin"
+        }else if (theName == "User"){
+            nameText.text = "User"
         }
+
+
         submitButton.setOnClickListener {
              if (newRecordButton.isChecked){
                 val i = Intent(this, MainActivity4::class.java)
