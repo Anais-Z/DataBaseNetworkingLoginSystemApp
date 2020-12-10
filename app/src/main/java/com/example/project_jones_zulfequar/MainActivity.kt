@@ -1,16 +1,18 @@
 package com.example.project_jones_zulfequar
 
 import android.accessibilityservice.GestureDescription
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
-
+import kotlinx.android.synthetic.main.activity_main2.*
 
 
 class MainActivity : AppCompatActivity() {
+    val myPrefs = "PrefsFile"
     lateinit  var vm : MyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +37,15 @@ class MainActivity : AppCompatActivity() {
 
                         getData(url)
                     val i = Intent(this, MainActivity2::class.java)
+
+                    if (loggedIn.isChecked){
+                        saveLogin()
+                    }
                     intent.putExtra("Username", name)
                     startActivity(i)
                     userNameText.text.clear()
                     passwordText.text.clear()
-                    if (loggedIn.isChecked){
 
-                    }
                 }else{
                     getData(url2)
                     userNameText.text.clear()
@@ -52,12 +56,37 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please fill in every field", Toast.LENGTH_SHORT).show()
             }
 
-
-
         }
+
 
     }
     fun getData(url : String) {
             vm.makeRequest(url)
     }
+
+    fun saveLogin(){
+        var username = userNameText.text.toString()
+        var password = passwordText.text.toString()
+
+        if(username.isNotBlank() && password.isNotBlank()){
+            val sharedPrefs = getSharedPreferences(myPrefs, Context.MODE_PRIVATE)
+
+            val editor = sharedPrefs.edit()
+            editor.putString("username", username)
+            editor.putString("password", password)
+            editor.commit()
+        }
+    }
+
+    fun getLogin(){
+        val sharedPrefs = getSharedPreferences(myPrefs, MODE_PRIVATE)
+        var username = sharedPrefs.getString("username", " ")
+
+        Toast.makeText(this, "Saved username as: $username", Toast.LENGTH_LONG).show()
+        nameText.text = username
+    }
+
+
+
+
 }

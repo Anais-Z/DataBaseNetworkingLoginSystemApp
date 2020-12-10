@@ -1,16 +1,19 @@
 package com.example.project_jones_zulfequar
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main2.*
 
 
 
 class MainActivity2 : AppCompatActivity() {
     var theName : String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
@@ -35,4 +38,6 @@ class MainActivity2 : AppCompatActivity() {
             }
         }
     }
+
+
 }
