@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
+
+
 class MainActivity : AppCompatActivity() {
     lateinit  var vm : MyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,6 +7,8 @@ import android.widget.RadioButton
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main2.*
 
+
+
 class MainActivity2 : AppCompatActivity() {
     var theName : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {

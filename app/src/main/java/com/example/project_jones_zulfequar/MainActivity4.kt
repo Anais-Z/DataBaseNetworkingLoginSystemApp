@@ -16,6 +16,7 @@ import com.example.project_jones_zulfequar.MyDatabase.Companion.getDatabase
 import kotlinx.android.synthetic.main.activity_main4.*
 
 class MainActivity4 : AppCompatActivity() {
+//IMPORTANT: If this part crashes, try uninstalling the app and running the program again
 
     lateinit var viewModel: MyViewModel
      lateinit var score : SeekBar
