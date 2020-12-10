@@ -33,8 +33,8 @@ class MainActivity2 : AppCompatActivity() {
                 val i2 = Intent(this, ViewRecords::class.java)
                 startActivity(i2)
             }else if (logOutButton.isChecked){
-                System.exit(0);
-                 Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
+                val i3 = Intent(this, MainActivity::class.java)
+                 startActivity(i3)
             }
         }
     }
